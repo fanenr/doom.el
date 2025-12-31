@@ -186,8 +186,8 @@
   ;; c/c++ lsp
   (add-to-list 'eglot-server-programs
                '((c-mode c-ts-mode c++-mode c++-ts-mode) .
-                 ("/home/arthur/Downloads/clangd/bin/clangd"
-                  "-j" "8"
+                 ("clangd"
+                  "-j=4"
                   "--malloc-trim"
                   "--pch-storage=disk"
                   "--query-driver=/usr/bin/gcc,/usr/bin/g++"))))
