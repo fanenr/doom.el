@@ -131,6 +131,10 @@
             "C-e" #'forward-sentence
             "C-a" #'backward-sentence))
 
+;; theme
+(custom-set-faces!
+  '(font-lock-function-call-face :slant normal))
+
 ;; editor
 (setq-default tab-width 8)
 
