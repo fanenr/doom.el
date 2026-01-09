@@ -1,46 +1,52 @@
-MY DOOM EMACS CONFIGURATION
-===========================
+DOOM EMACS
+==========
 
-INSTALLATION
-------------
-[os :: tty]
-    $ sudo dnf in wl-clipboard
+My Doom Emacs configuration.
 
-[editor :: format]
-    $ npm install -g prettier
+DEPENDENCES
+-----------
 
-[tools :: editorconfig]
-    $ sudo dnf in editorconfig
+os.tty:
+	$ sudo dnf in wl-clipboard
 
-[lang :: cc]
-    $ sudo dnf in clang-tools-extra
+editor.format:
+	$ bun i -g prettier
 
-[lang :: python]
-    $ pipx install black
-    $ pipx install pyright
+tools.editorconfig:
+	$ sudo dnf in editorconfig
 
-[lang :: sh]
-    $ sudo dnf in shfmt
-    $ sudo dnf in shellcheck
-    $ npm install -g bash-language-server
+lang.cc:
+	$ sudo dnf in clang-tools-extra
 
-[lang :: yaml]
-    $ npm install -g yaml-language-server
+lang.python:
+	$ uv tool install black
+	$ uv tool install pyright
 
-[lang :: json]
-    $ npm install -g vscode-json-languageserver
+lang.sh:
+	$ sudo dnf in shfmt
+	$ sudo dnf in shellcheck
+	$ bun i -g bash-language-server
 
-[other]
-    - https://github.com/jdtsmith/eglot-booster
-    - https://github.com/neocmakelsp/neocmakelsp
+lang.yaml:
+	$ bun -i -g yaml-language-server
 
-[lang :: go]
-    $ go install golang.org/x/tools/gopls@latest
-    $ go install golang.org/x/tools/cmd/godoc@latest
-    $ go install github.com/stamblerre/gocode@latest
-    $ go install github.com/fatih/gomodifytags@latest
-    $ go install golang.org/x/tools/cmd/gorename@latest
-    $ go install golang.org/x/tools/cmd/goimports@latest
-    $ go install github.com/cweill/gotests/gotests@latest
-    $ go install github.com/x-motemen/gore/cmd/gore@latest
-    $ curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/HEAD/install.sh | sh -s -- -b $(go env GOPATH)/bin latest
+lang.json:
+	$ bun -i -g vscode-json-languageserver
+
+lang.go:
+	$ go install golang.org/x/tools/gopls@latest
+	$ go install golang.org/x/tools/cmd/godoc@latest
+	$ go install github.com/stamblerre/gocode@latest
+	$ go install github.com/fatih/gomodifytags@latest
+	$ go install golang.org/x/tools/cmd/gorename@latest
+	$ go install golang.org/x/tools/cmd/goimports@latest
+	$ go install github.com/cweill/gotests/gotests@latest
+	$ go install github.com/x-motemen/gore/cmd/gore@latest
+	* https://golangci-lint.run/docs/welcome/install/local/
+
+OTHER
+-----
+
+Some useful tools:
+	* https://github.com/jdtsmith/eglot-booster
+	* https://github.com/neocmakelsp/neocmakelsp

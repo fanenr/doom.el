@@ -142,6 +142,7 @@
 (add-to-list 'auto-mode-alist '("\\.clangd$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.clang-tidy$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.clang-format$" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\README$" . change-log-mode))
 
 ;; vterm hook
 ;; turn off centaur-tabs
@@ -183,10 +184,6 @@
 
 ;; eglot
 (after! eglot
-  ;; cmake lsp
-  (add-to-list 'eglot-server-programs
-               '((cmake-mode cmake-ts-mode) .
-                 ("neocmakelsp" "--stdio")))
   ;; c/c++ lsp
   (add-to-list 'eglot-server-programs
                '((c-mode c-ts-mode c++-mode c++-ts-mode) .
@@ -194,13 +191,16 @@
                   "-j=4"
                   "--malloc-trim"
                   "--pch-storage=disk"
-                  "--query-driver=/usr/bin/gcc,/usr/bin/g++"))))
+                  "--query-driver=/usr/bin/gcc,/usr/bin/g++")))
+  ;; cmake lsp
+  (add-to-list 'eglot-server-programs
+               '((cmake-mode cmake-ts-mode) . ("neocmakelsp" "stdio"))))
 
 ;; apheleia
 (after! apheleia
   ;; cmake formatter
   (set-formatter! 'neocmakelsp
-    '("neocmakelsp" "--format" filepath) :modes '(cmake-mode)))
+    '("neocmakelsp" "format" filepath) :modes '(cmake-mode cmake-ts-mode)))
 
 ;; whitespace
 (global-whitespace-mode t)
