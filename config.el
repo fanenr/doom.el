@@ -107,8 +107,7 @@
 
       ;; copilot-mode
       (:map copilot-completion-map
-            "<tab>" #'copilot-accept-completion
-            "C-<tab>" #'copilot-accept-completion-by-word)
+            "<tab>" #'copilot-accept-completion)
 
       ;; quick access
       (:map my-o-map
@@ -119,8 +118,11 @@
             ;; eglot
             "C-r" #'eglot-reconnect
             ;; eldoc
-            "C-g" #'eldoc-box-quit-frame
-            "C-o" #'eldoc-box-help-at-point)
+            "C-h" #'eldoc-doc-buffer
+            ;; eldoc-box
+            "C-o" #'eldoc-box-help-at-point
+            "C-n" (cmd! (eldoc-box-scroll-up nil))
+            "C-p" (cmd! (eldoc-box-scroll-down nil)))
 
       ;; jump expr/stmt
       (:map my-j-map
@@ -211,7 +213,8 @@
 (use-package! eldoc-box
   :config
   (setq eldoc-box-max-pixel-width 800
-        eldoc-box-max-pixel-height 400))
+        eldoc-box-max-pixel-height 400)
+  (add-hook 'doom-escape-hook #'eldoc-box-quit-frame))
 
 ;; copilot
 (use-package! copilot
